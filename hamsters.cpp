@@ -49,10 +49,12 @@ void comer(Hamster& h) {
         comiendo++;
         printf("Hamsters comiendo: %d. \n", comiendo);
         mtx.unlock();
-	        printf("%s esta comiendo.\n", h.nombre.c_str());
+	printf("%s esta comiendo.\n", h.nombre.c_str());
         this_thread::sleep_for(seconds(2));
         mtx.lock();
-        comiendo--;
+	printf("%s ya no esta comiendo.\n", h.nombre.c_str());
+	comiendo--;
+	printf("Hamsters comiendo: %d. \n", comiendo);
         sem_post(&sem);
         mtx.unlock();
 }
@@ -68,6 +70,8 @@ void correr(Hamster& h) {
         printf("%s esta corriendo.\n", h.nombre.c_str());
         this_thread::sleep_for(seconds(4));
         rueda.h = NULL;
+	printf("%s ya no esta corriendo.\n", h.nombre.c_str());
+	printf("%s rueda vacia.\n");
         sem_post(&sem);
         mtx.unlock();
 
