@@ -71,7 +71,7 @@ void correr(Hamster& h) {
         this_thread::sleep_for(seconds(4));
         rueda.h = NULL;
 	printf("%s ya no esta corriendo.\n", h.nombre.c_str());
-	printf("%s rueda vacia.\n");
+	printf("rueda vacia.\n");
         sem_post(&sem);
         mtx.unlock();
 
